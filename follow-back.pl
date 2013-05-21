@@ -53,8 +53,10 @@ do{
 for my $id (keys %{$followers}){
 	next if $following->{$id};
 	# next if protected
+  eval('
 	if(my $f = $twitter->create_friend($id)){
 		print "$f->{screen_name} ($id)\n";
 	}
+  ');
 }
 exit;
